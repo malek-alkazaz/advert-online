@@ -1,0 +1,103 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<div class="container">
+    <div class="add_product" id="add_product">
+      <h2>Add Offer</h2>
+      <div class="form">
+        <form id="form" action="/add_product" method="POST" enctype="multipart/form-data" data-flag="0">
+          <div class="wrapper">
+            <h2>Upload Files!</h2>
+            <input type="file" name="profile" id="file-input" onchange="preview()" multiple />
+            <label for="file-input">
+                <i class="fas fa-upload"></i> &nbsp; Choose A Photo
+            </label>
+            <p id="num-of-files">No Files Chosen</p>
+            <div id="images"></div>
+          </div>
+            <div id="imgErr" class="Image-Error"></div>
+            <div class="product-form-control">
+              <input class="input2" type="text" placeholder="Product Name" id="name" name="name" />
+              <small class="text_error" ></small>
+          </div>
+          <div class="product-form-control">
+            <input class="input2" type="text" placeholder="Product Price" id="price" name="price" />
+            <small class="text_error" ></small>
+          </div>
+         
+          <input class="input" type="text" placeholder="category " id="categoryName" name="category" value="" hidden/>
+          <div class="p-select">
+            <p class="input input-extra">Category</p>
+            <select id="category-list" class="input input-extra" >
+              <% for(var i = 0; i < categorys.length; i++) { %>
+                <option ><%= categorys[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="p-select">
+            <p class="input input-extra">Extra Days </p>
+            <select name="extra_days" id="list" class="input input-extra">
+              <% for(var i = 0; i <= extraDays; i++) { %>
+                <option value="<%= i %>" ><%= i %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="product-form-control txtarea">
+            <textarea class="input2" placeholder="description" id="description" name="description"></textarea>
+            <small class="text_error" ></small>
+          </div>
+          <input type="submit" value="Add" />
+        </form>
+      </div>
+  </div>
+</div>
+
+<script>
+    const name = document.getElementById("name");
+    const price = document.getElementById("price");
+    const description = document.getElementById("description");
+    const categoryList = document.getElementById("category-list");
+    const Pricelist = document.getElementById("list");
+
+      document.querySelector("#category-list").addEventListener("click", () => {
+      var x = document.querySelector("#category-list").selectedIndex;
+      let optionText = document.getElementsByTagName("option")[x].innerText;
+      document.getElementById("categoryName").value = optionText;
+      })
+
+      window.addEventListener("load",function(e) {
+        var status ="<%= status %>";
+        if(status =="inactive"){
+            Swal.fire({
+                title: 'You cannot add a new offer Please check your subscription status ',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            SetReadOnly([name,price,description]);
+            SetDisplay([categoryList,Pricelist]);
+        }
+    
+        function SetDisplay(inputArr) {
+            inputArr.forEach(function(input){
+                input.setAttribute('disabled','false');
+            });
+        }
+
+        function SetReadOnly(inputArr) {
+            inputArr.forEach(function(input){
+                input.readOnly = true; 
+            });
+        }
+        
+    });
+</script>
+<script src="js/checkProduct.js"></script>
+<script src="js/uploadimage.js"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

@@ -1,0 +1,46 @@
+<!-- include header -->
+
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Add Customer -->
+<div class="container">
+    <h2  class="h2-customer">Update Profile</h2>
+    <div class="customer_profile" id="add-customer">
+        <div class="form">
+            <form action="/updateprofile?cust_id=<%= customer.customer._id %>" method="POST" enctype="multipart/form-data">
+                <div class="image">
+                    <div class="wrapper">
+                        <h2>Upload Files!</h2>
+                        <input type="file" name="profile" id="file-input" onchange="preview()" multiple />
+                        <label for="file-input">
+                            <i class="fas fa-upload"></i> &nbsp; Choose A Photo
+                        </label>
+                        <p id="num-of-files">No Files Chosen</p>
+                        <div id="images">
+                            <figure>
+                                <img src="/uploads/<%=customer.customer.image%>" alt="">
+                                <figcaption></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="inputProfile">
+                <p class="paragrafirst">password</p> <input class="input" type="text" placeholder="password" name="password" value=""/>
+                <p >confirm password</p> <input class="input" type="text" placeholder="confirm password" name="confirm password" value=""/>
+                <p class="paragrafirst">Shop Name</p> <input class="input" type="text" placeholder="Shop Name" name="shop_name" value="<%= customer.customer.shop_name%>"/>
+                <p>Shop Address</p> <input class="input" type="text" placeholder="Shop Address" name="shop_address" value="<%= customer.customer.shop_address%>"/>
+                <p class="paragrafirst">Your Phone</p> <input class="input" type="text" placeholder="Your Phone" name="phone1" value="<%= customer.customer.phone1%>"/>
+                <p>Your Phone</p> <input class="input" type="text" placeholder="Your Phone" name="phone2" value="<%= customer.customer.phone2%>"/>
+                <p class="paragrafirst">Brief</p> <textarea class="input" placeholder="Brief About The Shop" name="brief"></textarea>
+                <input type="submit" value="Update" />
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>
+<!-- End Add Customer -->
+<script src="js/uploadimage.js"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

@@ -1,0 +1,77 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+<!-- Start Add Customer -->
+<div class="container">
+    <h2  class="h2-customer">Add Customer</h2>
+    <div class="add-customer" id="add-customer">
+        <div class="form">
+            <form id="form" action="/add_customer" method="POST" enctype="multipart/form-data" data-flag="0">
+                <div class="image">
+                    <div class="wrapper">
+                        <h2>Upload Files!</h2>
+                        <input type="file" name="profile" id="file-input" onchange="preview()" multiple />
+                        <label for="file-input">
+                            <i class="fas fa-upload"></i> &nbsp; Choose A Photo
+                        </label>
+                        <p id="num-of-files">No Files Chosen</p>
+                        <div id="images"></div>
+                    </div>
+                </div>
+                <div id="imgErr" class="Image-Error"></div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="username" placeholder="username" name="username"/>
+                    <small class="text_error" ></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="password" placeholder="password" name="password"/>
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="shopName" placeholder="Shop Name" name="shop_name" />
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="confirmPassword" placeholder="confirm password" name="confirmPassword"/>
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="shopAddress" placeholder="Shop Address" name="shop_address" />
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="mobail" placeholder="Mobail" name="phone1"/>
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="telephone" placeholder="Telephone" name="phone2"/>
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control" hidden>
+                    <input class="input2" type="text" placeholder="facebook URL" name="pageurl" value="vv"/>
+                    <div class="text_error"></div>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="extraDays" placeholder="extra days" name="extraDays" />
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="monthsSubscription" placeholder="Number of months of subscription" name="expiryDate" />
+                    <small class="text_error"></small>
+                </div>
+                <div class="form-control">
+                    <input class="input2" type="text" id="extraProduct" placeholder="Number of extra product" name="extraProduct" />
+                    <small class="text_error"></small>
+                </div>
+                <textarea class="input2" id="brief" placeholder="Brief About The Shop" name="brief"></textarea>
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+    </div>    
+</div>
+<!-- End Add Customer -->
+<script src="js/checkCustomer.js"></script>
+<script src="js/uploadimage.js"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

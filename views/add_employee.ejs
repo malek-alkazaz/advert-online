@@ -1,0 +1,25 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+<div class="container">
+    <div class="add_employee" id="add_employee">
+        <h2>Add Employee</h2>
+        <div class="form">
+            <form action="/add_employee" method="POST" >
+                <input class="input" type="text" placeholder="username" name="username" />
+                <input class="input" type="text" placeholder="password " name="password" />
+                <input class="input" type="text" placeholder="First Name" name="firstname" />
+                <input class="input" type="text" placeholder="Father Name " name="fathername" />
+                <input class="input" type="text" placeholder="Last Name " name="lastname" />
+                <input class="input-date-emp" type="date" placeholder="dd-mm-yyyy" name="dateOfB" value=""/>
+                <input class="input" type="text" placeholder="Address " name="address" />
+                <input class="input" type="text" placeholder="Phone Number " name="phone" />
+                <textarea class="input" placeholder="Skills" name="skills"></textarea>
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+    </div>
+</div>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

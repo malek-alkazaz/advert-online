@@ -1,0 +1,58 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Landing -->
+<div class="landing">
+    <div class="container">
+        <div class="text">
+        <h1>Welcome, To E3lank World</h1>
+        <p>Here we will share with you the latest offers and discounts fro, your favorite stores.we wish you a pleasant and useful browsing</p>
+        </div>
+        <div class="image">
+        <img src="img/landing-image.png" alt="" />
+        </div>
+    </div>
+    <a href="#product" class="go-down">
+        <i class="fas fa-angle-double-down fa-2x"></i>
+    </a>
+</div>
+<!-- End Landing -->
+
+<!-- Start product -->
+<div class="product" id="product">
+    <h2 class="main-title">Product</h2>
+    <div class="container"> 
+        <% for( let product of products) { %>
+      <div class="box">
+        <div class="image">
+          <img src= "uploads/<%= product.image[0]%>" alt="" />
+        </div>
+        <div class="content-by">
+            <div class="by_user">
+                <i class="fas fa-user"></i>
+                <p>By <%= product.customer[1]%></p>
+            </div>
+            <div class="calender_card">
+                <i class="fas fa-calendar-alt"></i>
+                <% m = new Date(product.expiryAt) %>
+                <% dateString = m.getUTCFullYear() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCDate() %>
+                <p><%= dateString %></p> 
+            </div>
+        </div>
+        <div class="content">
+          <h3><%= product.name %> </h3>
+          <p><%= product.description %> </p>
+        </div>
+        <div class="info">
+          <a href="/details?pro_id=<%= product._id%>&cust_id=<%= product.customer[0]%>">Read More</a>
+          <i class="fas fa-long-arrow-alt-right"></i>
+        </div>
+      </div>
+      <% } %>
+    </div>
+</div>
+<!-- End product -->
+<!-- include header -->
+<%- include('include/_footer') %>
+<!-- /include header -->

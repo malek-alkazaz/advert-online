@@ -1,0 +1,46 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start product -->
+<div class="container">
+    <form class="search-employee" id="search-employee" action="/searchCustomer" method="POST">
+        <input class="tbox-customer" type="text" placeholder="Search" name="search" />
+        <button type="submit" form="search-employee" class="btn-search-employee"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+<div class="product" id="product">
+    <div class="container"> 
+    <%for( i=0 ; i < customer.customers.length ; i++) { %>
+      <div class="box">
+        <div class="image">
+            <img src= "uploads/<%= customer.customers[i].image%>" alt="" />
+        </div>
+        <div class="content-by">
+            <div class="by_user">
+                <i class="fas fa-user"></i>
+                <p> Shop Name : <%= customer.customers[i].shop_name%></p>
+            </div>
+            <div class="calender_card"> 
+            </div>
+        </div>
+        <div class="content">
+            <h3>Address : <%= customer.customers[i].shop_address %> </h3>
+            <p>Phone : <%= customer.customers[i].phone1 %> </p>
+            <p>Phone : <%= customer.customers[i].phone2 %> </p>
+            <p><a href="<%= customer.customers[i].pageurl%>">Go to the store page  </a><i class="fas fa-long-arrow-alt-right"></i> </p>
+        </div>
+        <div class="info">
+            <a href="/customerDetails?cust_id=<%= customer.customers[i]._id %>">Update</a>
+            <form action="/customers/<%= customer.customers[i]._id %>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+</div>
+<!-- End product -->
+<!-- include header -->
+<%- include('include/_footer') %>
+<!-- /include header -->

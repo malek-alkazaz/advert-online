@@ -1,0 +1,23 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Add Price -->
+<div class="container">
+    <h2  class="h2-customer">Add Customer</h2>
+    <div class="add-customer" id="add-customer">
+        <div class="form">
+            <form action="/add_price" method="POST" enctype="multipart/form-data">
+                <input class="input" type="text" placeholder="Price for Day" name="day"/>
+                <input class="input" type="text" placeholder="Price for Month" name="Month"/>
+                <input class="input" type="text" placeholder="Price for Product" name="Product" />
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+
+    </div>    
+</div>
+<!-- End Add Price -->
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

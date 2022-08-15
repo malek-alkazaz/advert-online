@@ -1,0 +1,53 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+<div class="container">
+    <form class="search-employee" id="search-employee" action="/searchEmployee" method="POST">
+        <input class="tbox-employee" type="text" placeholder="Search" name="search" />
+        <button type="submit" form="search-employee" class="btn-search-employee"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+<!-- End Search Employee -->
+<!-- Main Site -->
+<main id="site-main">
+    <div class="container">
+        <form action="/" method="POST">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone</th>
+                        <th>Skills</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < employees.length; i++) { %>
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%=employees[i].firstname%> <%=employees[i].fathername%> <%=employees[i].lastname%></td>
+                        <td><%=employees[i].address%></td>
+                        <td><%=employees[i].phone%></td>
+                        <td><%=employees[i].skills%></td>
+                        <td>
+                            <a href="/update_employee?emp_id=<%=employees[i]._id%>" class="btn border-shadow update">
+                                <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                            </a>
+                            <a href="/delete_employee/<%=employees[i]._id%>" class="btn border-shadow">
+                                <span class="text-gradient"><i class="fas fa-times"></i></span>
+                            </a>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</main>
+<!-- /Main Site -->
+<!-- End Search Employee -->
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

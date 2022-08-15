@@ -1,0 +1,119 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Add Customer -->
+<div class="container">
+    <h2  class="h2-customer">Update Customer</h2>
+    <div class="update-customer" id="add-customer">
+        <div class="form">
+            <form id="form" action="/updatecustomer?cust_id=<%= customer.customer._id %>" method="POST" enctype="multipart/form-data">
+                <div class="image">
+                    <div class="wrapper">
+                        <h2>Upload Files!</h2>
+                        <input type="file" name="profile" id="file-input" onchange="preview()" multiple />
+                        <label for="file-input">
+                            <i class="fas fa-upload"></i> &nbsp; Update A Photo
+                        </label>
+                        <p id="num-of-files"></p>
+                        <div id="images">
+                            <figure>
+                                <img src="/uploads/<%= customer.customer.image%>" alt="">
+                                <figcaption></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div id="imgErr" class="Image-Error"></div>
+                <div class="updateCustomer-Input">
+                    <div class="updateCustomer-con">
+                    <p class="paragrafirst">username</p>
+                    <input class="input" type="text" id="username" placeholder="username" name="username" value="<%= customer.customer.username%>"/>
+                    <small class="update_error" ></small>    
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p>password</p>
+                    <input class="input" type="text" id="password" placeholder="password" name="password" value="" />
+                    <small class="update_error" ></small>
+                    </div>  
+                    <div class="updateCustomer-con">
+                    <p class="paragrafirst">Shop Name</p>
+                    <input class="input" type="text" id="shopName" placeholder="Shop Name" name="shop_name" value="<%= customer.customer.shop_name%>"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p>Shop Address</p>
+                    <input class="input" type="text" id="shopAddress" placeholder="Shop Address" name="shop_address" value="<%= customer.customer.shop_address%>"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p class="paragrafirst">Mobail</p>
+                    <input class="input" type="text" id="mobail" placeholder="Your Phone" name="phone1" value="<%= customer.customer.phone1%>"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p>Telephone</p>
+                    <input class="input" type="text" id="telephone" placeholder="Your Phone" name="phone2" value="<%= customer.customer.phone2%>"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p>Extra Days</p>
+                    <input class="input" type="text" id="extraDays" placeholder="extra days" name="extraDays" value="0"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con">
+                    <p class="paragrafirst">Months of Subscription</p>
+                    <input class="input" type="text" id="monthsSubscription" placeholder="Number of months of subscription" name="expiryDate" value=""/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <div class="updateCustomer-con last">
+                    <p>Extra Product</p>
+                    <input class="input" type="text" id="extraProduct" placeholder="Number of extra product" name="extraProduct" value="0"/>
+                    <small class="update_error" ></small>
+                    </div>
+                    <input type="submit" value="Update" />
+
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>
+<!-- End Add Customer -->
+<script>
+    const name = document.getElementById("username");
+    const shopName = document.getElementById("shopName")
+    const shopAddress = document.getElementById("shopAddress");
+    const mobail = document.getElementById("mobail");
+    const telephone = document.getElementById("telephone");
+    const extraDays = document.getElementById("extraDays");
+    const exDate = document.getElementById("monthsSubscription");
+    const extraProduct = document.getElementById("extraProduct");
+    const form = document.getElementById("form");
+
+    window.addEventListener("load",function(e) {
+        var date =new Date("<%= customer.customer.expiry_date%>");
+        if(date < Date.now()){
+            Swal.fire({
+                title: 'Customer subscription has expired',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            checkInput([extraDays,extraProduct]);
+        }
+    
+        function checkInput(inputArr) {
+            inputArr.forEach(function(input){
+                input.readOnly = true; 
+            });
+        }
+        
+    });
+</script>
+<script src="js/uploadimage.js"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

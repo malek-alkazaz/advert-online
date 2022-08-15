@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet" />
+     <!-- ===== BOX ICONS ===== -->
+     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+     <title>A3lank</title>
+</head>
+<body>
+    <div class="l-form">
+        <div class="shape1"></div>
+        <div class="shape2"></div>
+
+        <div class="form">
+            <img src="img/authentication.svg" alt="" class="form__img">
+            <form class="form__content" action="/login" method="POST" id="login">
+                <h1 class="form__title">Welcome</h1>
+                <div class="form__div form__div-one">
+                    <div class="form__icon">
+                        <i class='bx bx-user-circle'></i>
+                    </div>
+                    <div class="form__div-input">
+                        <label for="" class="form__label">Username</label>
+                        <input type="text" name="username" class="form__input">
+                    </div>
+                </div>
+                <div class="form__div">
+                    <div class="form__icon">
+                        <i class='bx bx-lock' ></i>
+                    </div>
+                    <div class="form__div-input">
+                        <label for="" class="form__label">Password</label>
+                        <input type="password" name="password" class="form__input">
+                    </div>
+                </div>
+                <a href="#" class="form__forgot">Forgot Password?</a>
+                <input type="submit" class="form__button" value="Login">
+            </form>
+        </div>
+    </div>
+    <!-- ===== MAIN JS ===== -->
+    <script src="js/login.js"></script
+</body>
+</html>

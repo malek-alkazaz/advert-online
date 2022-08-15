@@ -1,0 +1,73 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Add Price -->
+<div class="container">
+    <h2  class="h2-customer">Prices</h2>
+    <div class="add_product " id="add_product ">
+
+        <div class="form">
+            <form class="form_category" action="/update_price" method="POST">
+              <div class="select-price">
+                    
+                  <p class="input input-category">Subscription </p>
+                  <select name="category_select" id="list" class="input input-category">
+                    <% for(var i = 0; i < price.length; i++) { %>
+                      <option value="<%= price[i]._id %>" ><%= price[i].name %></option>
+                    <% } %>
+                  </select>
+              </div>
+              <input class="input_price" type="text" placeholder="Category Name " id="updateName" name="name" value=""/>
+              <input class="input_price" type="text" placeholder="Category Price " id="updatePrice" name="price" value=""/>
+              <input type="submit" value="Update" />
+            </form>
+          </div>
+    
+          <div class="form">
+            <form class="form_category" action="/delete_price" method="POST" >
+              <div class="select-category">
+                  <p class="input input-category">Subscription </p>
+                  <select name="category_select" id="list1" class="input input-category">
+                    <% for(var i = 0; i < price.length; i++) { %>
+                      <option value="<%= price[i]._id %>" ><%= price[i].name %></option>
+                    <% } %>
+                  </select>
+              </div>
+              <input class="input_category" type="text" placeholder="Category Name  " id='deleteCategory' name="name" value="" readonly/>
+              <input type="submit" value="Delete" />
+            </form>
+          </div>
+
+        <div class="form">
+            <form name="category_select" action="/add_price" method="POST" >
+              <input class="input" type="text" placeholder="Subscription Name " name="name" value=""/>
+              <input class="input" type="text" placeholder="Price " name="price" value=""/>
+              <input type="submit" value="Add" />
+            </form>
+        </div>
+    </div>    
+</div>
+<!-- End Add Price -->
+<script>
+    var datajson = '<%-JSON.stringify(price)%>'
+    var data = JSON.parse(datajson);
+
+    document.querySelector("#list").addEventListener("click", () => {
+        var x = document.querySelector("#list").selectedIndex;
+        let optionText = document.getElementsByTagName("option")[x].innerText;
+        document.getElementById("updateName").value = data[x].name;
+        document.getElementById("updatePrice").value = data[x].price;
+    })
+
+    document.querySelector("#list1").addEventListener("click", () => {
+        var x = document.querySelector("#list1").selectedIndex;
+        let optionText = document.getElementsByTagName("option")[x].innerText;
+        document.getElementById("deleteCategory").value = data[x].name;
+    })
+
+
+</script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

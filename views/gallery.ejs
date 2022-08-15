@@ -1,0 +1,32 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<div class="container">
+    <div class="product" id="product">
+        <h2 class="main-title">Gallery</h2>
+      <div class="gallery" id="gallery">
+          <%for(var i =0; i< gallery.length ; i++){%>
+          <div class="imageBox" id="boximg" onclick="myfun('<%=i%>')">
+                <img src="/uploads/<%=gallery[i].url%>" />
+                <p ><%=gallery[i].name%></p>
+                <a class="ref" href="/gallery-product?cat_id=<%= gallery[i]._id%>"></a>
+          </div>
+          <% } %>
+      </div>
+
+  </div>
+</div>
+
+<script>
+
+    const img = document.querySelector("imageBox");
+    const hrf = document.querySelectorAll(".ref");
+    var par = document.querySelectorAll("p");
+    function myfun(i){
+        hrf[i].click();
+    }
+</script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

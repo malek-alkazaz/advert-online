@@ -1,0 +1,78 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<div class="container">
+    <div class="add_product" id="add_product">
+      <h2>Update Product</h2>
+      <div class="form">
+        <form action="/editProduct?pro_id=<%= product.product._id %>" method="POST" enctype="multipart/form-data">
+          <div class="wrapper">
+            <h2>Upload Files!</h2>
+            <input type="file" name="profile" id="file-input" onchange="preview()" multiple />
+            <label for="file-input">
+                <i class="fas fa-upload"></i> &nbsp; Update A Photo
+            </label>
+            <p id="num-of-files"></p>
+            <div id="images">
+              <% for(var i = 0 ; i < product.product.image.length ; i++ ) { %>
+                <figure>
+                    <img src="/uploads/<%= product.product.image[i]%>" alt="">
+                    <figcaption></figcaption>
+                </figure>
+                <% } %>
+            </div>
+          </div>
+          <input class="input" type="text" placeholder="Product ID" name="id" value="<%= product.product._id %>" hidden/>
+          <input class="input" type="text" placeholder="Product Name" name="name" value="<%= product.product.name %>"/>
+          <input class="input" type="text" placeholder="Product Price " name="price" value="<%= product.product.price %>" />
+          <input class="input" type="text" placeholder="category " id="categoryName" name="category" value="" hidden />
+          <div class="p-select">
+            <p class="input input-extra">Category</p>
+            <select name="category_select" id="category-list" class="input input-extra">
+              <% for(var i = 0; i < product.categorys.length; i++) { %>
+                <option value="<%= product.categorys[i]._id %>" ><%= product.categorys[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="p-select">
+            <p class="input input-extra">Extra Days </p>
+            <select name="extra_days" id="list" class="input input-extra">
+              <% for(var i = 0; i <= product.extraDays; i++) { %>
+                  <option value="<%= i %>" > <%= i %> </option>
+              <% } %>
+            </select>
+          </div>
+          <!-- <input class="input" type="text" placeholder="description " name="description" value="<%= product.product.description %>" /> -->
+          <textarea class="input" placeholder="description About The Product" name="description" ><%= product.product.description %></textarea>
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+  </div>
+</div>
+
+<script>
+    document.querySelector("#category-list").addEventListener("click", () => {
+    var x = document.querySelector("#category-list").selectedIndex;
+    let optionText = document.getElementsByTagName("option")[x].innerText;
+    document.getElementById("categoryName").value = optionText;
+    })
+    window.onload = function() { 
+      var category = "<%= product.product.category %>";
+      document.getElementById("categoryName").value = category;
+      // var x = document.querySelector("#category-list").selectedIndex;
+      // document.getElementsByTagName("option")[x].innerText =  category;
+      const select = document.getElementById("category-list");
+      for(var i = 0; i < select.options.length; i++) {
+        if(select.options[i].label == category){
+          select.selectedIndex = i;
+        }
+      }
+    };
+</script>
+
+<script src="js/uploadimage.js"></script>
+
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->

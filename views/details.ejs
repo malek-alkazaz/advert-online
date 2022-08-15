@@ -1,0 +1,65 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start details -->
+<div class="details">
+
+    <div class="con">
+        <div class="img-carousel">
+            <div class="carousel">
+                <div class="item a"><img src="uploads/<%= product.image[0] %>" class="cov" alt=""></div>
+                <div class="item b"><img src="uploads/<%= product.image[1] %>" class="cov" alt=""></div>
+                <div class="item c"><img src="uploads/<%= product.image[2] %> " class="cov" alt=""></div>
+                <div class="item d"><img src="uploads/<%= product.image[0] %>" class="cov" alt=""></div>
+                <div class="item e"><img src="uploads/<%= product.image[3] %>" class="cov" alt=""></div>
+                <div class="item f"><img src="uploads/<%= product.image[4] %>" class="cov" alt=""></div>
+            </div>
+        </div>
+        <div class="next">Next</div>
+        <div class="prev">Prev</div>
+    </div>
+
+
+    <div class="pro-del">
+        <div class="form">
+            <form action="">
+                <p><span>Name: </span> <%= product.name %></p> 
+                <p><span>Price: </span> <%= product.price %></p> 
+                <p><span>Description: </span> <%= product.description %></p> 
+                <p><span>Phone1: </span> <%= customer.phone1 %></p> 
+                <p><span>Phone2: </span> <%= customer.phone2 %></p> 
+              <a href="/store?cust_id=<%= customer._id%>">Store Page</a>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End details -->
+
+
+<!-- Start details-dwn-pro -->
+<div class="details-dwn-pro">
+    <ul id="autoWidth" class="cs-hidden">
+        <% i=0 %>
+        <% for( i; i < productDown.length; i++) { %>
+            <li class="item-a">
+                <div class="slid-down">
+                    <div class="box">
+                        <p class="title"><%= productDown[i].name %></p>
+                        <img src="uploads/<%= productDown[i].image[0]%>" class="model" alt="">
+                        <div class="del-down">
+                            <p><%= productDown[i].description %></p>
+                            <p><span>Price: </span><%= productDown[i].price %></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <% } %>
+    </ul>
+</div>
+<!-- End details-dwn-pro -->
+<script src="js/detel.js"></script>
+<!-- include footer -->
+<%- include('include/_footer') %>
+<!-- /include footer -->
+

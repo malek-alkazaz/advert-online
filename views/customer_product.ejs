@@ -1,0 +1,66 @@
+<!-- include header -->
+<%- include('include/_header') %>
+<!-- /include header -->
+
+<!-- Start Landing -->
+<div class="landing" style="--sk-var:0 deg;">
+    <div class="container">
+        <div class="text">
+            <h1><%= storeProduct.customer.shop_name %></h1>
+            <p><i class="fas fa-map-marker-alt"></i>
+                Address: <%= storeProduct.customer.shop_address %> </p>
+            <p><i class="fas fa-phone"></i>
+                Phone Number: <%= storeProduct.customer.phone1 %> </p>
+            <p><i class="fas fa-phone"></i>
+                Phone Number: <%= storeProduct.customer.phone2 %> </p>
+            <p><%= storeProduct.customer.brief %><br>............</p>
+        </div>
+        <div class="image">
+            <img src="uploads/<%= storeProduct.customer.image %>" alt="" 
+            style="animation: none;
+            border-bottom-right-radius: 100px;
+            border-top-left-radius: 100px;"/>
+        </div>
+    </div>
+</div>
+<!-- End Landing -->
+
+<!-- Start product -->
+<div class="product" id="product">
+    <h2 class="main-title">Product</h2>
+    <div class="container"> 
+        <% for( let product of storeProduct.product) { %>
+      <div class="box">
+        <div class="image">
+          <img src= "/uploads/<%= product.image[0] %>" alt="" />
+        </div>
+        <div class="content-by">
+            <div class="by_user">
+                <i class="fas fa-user"></i>
+                <p>By <%= product.customer[1]%></p>
+            </div>
+            <div class="calender_card">
+                <i class="fas fa-calendar-alt"></i>
+                <% m = new Date(product.expiryAt) %>
+                <% dateString = m.getUTCFullYear() +"/"+ (m.getUTCMonth()+1) +"/"+ m.getUTCDate() %>
+                <p><%= dateString %></p> 
+            </div>
+        </div>
+        <div class="content">
+          <h3><%= product.name %> </h3>
+          <p><%= product.description %> </p>
+        </div>
+        <div class="info">
+            <a href="/edit_product?pro_id=<%= product._id%>">Update</a>
+            <form action="/myproduct/<%= product._id%>" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+</div>
+<!-- End product -->
+<!-- include header -->
+<%- include('include/_footer') %>
+<!-- /include header -->
